@@ -1,0 +1,21 @@
+{
+	"_config.user_lang":      "es",
+	
+	"_name":                  "Traducir en el lugar",
+	"_description":           "...",
+	
+	"_command.title":         "Traducir en el lugar",
+	
+	"_config.google_api_key": "Clave API de Google",
+	"_config.translate_from": "Traducir del",
+	"_config.translate_to":   "Traducir a",
+	"_config.api_key_desc":   "Deberá registrarse para obtener una cuenta gratuita de Google Cloud y crear una clave API para su servicio de traducción. Consulte el Léame.",
+	
+	"_err.error":             "Error",
+	"_err.no_api_key":        "Se debe ingresar una clave API de Google Translate en las preferencias de la extensión.",
+	"_err.cant_load_prefs":   "No se pueden cargar las preferencias del proyecto. Extraño.",
+	"_err.network":           "El servidor de traducción devolvió un error. No se puede procesar la solicitud.",
+	"_err.bad_response":      "El servidor de traducción no pudo procesar la solicitud.",
+	
+	"_prompt.dismiss":        "Despedir"
+}

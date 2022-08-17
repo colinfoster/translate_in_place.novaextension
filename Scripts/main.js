@@ -2,6 +2,7 @@
 exports.activate = function() {
     // Do work when the extension is activated
     nova.commands.register("tip.translate", handle_translate );
+	nova.commands.register("tip.resolve_language_menu", resolve_language_menu );
 }
 
 exports.deactivate = function() {
@@ -10,7 +11,30 @@ exports.deactivate = function() {
 
 
 // ---------------------------------------------------------------------------------------------- //
+/*	resolve_language_menu
+
+	An enum 'resolve' routine is needed because the alphabetical order of the languages changes
+	depending on the localization we're using for the current user.
+*/
+// ---------------------------------------------------------------------------------------------- //
+
+function resolve_language_menu()
+{	// This preference doesn't currently work as the default we'll still use it to determine the
+	// language that should be used for displaying the languages.
+	var user_lang = _l('_config.user_lang');
+	if( !user_lang || user_lang === '_config.user_lang')	// Shouldn't be impossible, but...
+		user_lang = 'en';
+	
+	const l = require('../' + user_lang + '.lproj/languages.js');
+	
+	return l.languages;
+}
+
+
+// ---------------------------------------------------------------------------------------------- //
 /*	handle_translate
+	
+	Handles the incoming "Translate in Place" command event.
 */
 // ---------------------------------------------------------------------------------------------- //
 
@@ -23,9 +47,9 @@ function handle_translate( editor )
 		if( !untranslated_text.length )
 			return;
 		
-		do_replace.editor     = editor;		// Kluge. Pass along the editor for use later.
+		do_replace.editor     = editor;				// Kluge. Pass along the editor for use later.
 		
-		tx_translate( untranslated_text, prefs );
+		tx_translate( untranslated_text, prefs );	// Transmit the translation request.
 	}
 	catch( error )
 	{
@@ -73,7 +97,7 @@ function tx_translate( untranslated_text, prefs )
 
 function rx_translate( data )
 {	// Extract the translated text from the data response.
-	var	translated_text = rc_obj_lookup( ['data', 'translations', 0,'translatedText'], data );
+	var	translated_text = rc_obj_lookup( ['data', 'translations', 0, 'translatedText'], data );
 	if( !translated_text )
 	{
 		rc_log( data );
@@ -97,7 +121,7 @@ function do_replace( translated_text )
 	
 	editor.edit( ( te ) =>
 	{
-		te.replace( range, translated_text );
+		te.replace( range, decodeURIComponent( translated_text ) );
 	} );
 }
 
@@ -269,7 +293,7 @@ function rc_obj_lookup( keys, o, or_else )
 
 
 // ---------------------------------------------------------------------------------------------- //
-/*	rc_log - v2.1.0 2022-06-23
+/*	rc_log - v2.1.1 2022-08-11
 */
 // ---------------------------------------------------------------------------------------------- //
 
@@ -277,9 +301,11 @@ function rc_log()
 {
 	rc_log.id++;
 	
-	var log_type_and_value= function( value, prefix )
+	var log_type_and_value = function( type, value, prefix )
 	{
-		console.log( prefix + rc_type( value ) + " (" + value.toString() + ")");
+		value = ['null','undefined'].indexOf( type ) === -1 ? " (" + value.toString() + ")" : '';
+		
+		console.log( prefix + type + value );
 	};
 	
 	try{ var caller_name = arguments.callee.caller.name ? arguments.callee.caller.name : 'anon'; }
@@ -296,13 +322,13 @@ function rc_log()
 		{
 			var keys = Object.keys( o );
 			if( !keys.length )
-				log_type_and_value( o, "- " );
+				log_type_and_value( type, o, "- " );
 			else
 			{
 				console.log('{');
 				keys.forEach( function( key )
 				{
-					log_type_and_value( o[ key ], '   "' + key + '": ' );
+					log_type_and_value( rc_type( o[ key ] ), o[ key ], '   "' + key + '": ' );
 				} );
 				console.log('}');
 			}
@@ -310,10 +336,10 @@ function rc_log()
 		else if( type === 'error')
 			console.log( "X Line " + o.line + ":" + o.column + " " + o.message );
 		else
-			log_type_and_value( o, "- " );
+			log_type_and_value( type, o, "- " );
 	}
 }
 rc_log.id = 0;
-dbg = rc_log;
+dbg = rc_log;	// To differentiate between temporary and permanent logging.
 
 // ---------------------------------------------------------------------------------------------- //

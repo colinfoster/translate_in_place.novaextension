@@ -1,0 +1,21 @@
+{
+	"_config.user_lang":      "fr",
+
+	"_name":                  "Traduire sur place",
+	"_description":           "...",
+	
+	"_command.title":         "Traduire sur place",
+	
+	"_config.google_api_key": "Clé API Google",
+	"_config.translate_from": "Traduit depuis",
+	"_config.translate_to":   "Traduire en",
+	"_config.api_key_desc":   "Vous devrez vous inscrire pour un compte Google Cloud gratuit et créer une clé API pour leur service de traduction. Voir le Lisez-moi.",
+	
+	"_err.error":             "Erreur",
+	"_err.no_api_key":        "Une clé API Google Translate doit être saisie dans les préférences de l&#39;extension.",
+	"_err.cant_load_prefs":   "Impossible de charger les préférences du projet. Bizarre.",
+	"_err.network":           "Le serveur de traduction a renvoyé une erreur. Impossible de traiter la demande.",
+	"_err.bad_response":      "Le serveur de traduction n&#39;a pas pu traiter la demande.",
+	
+	"_prompt.dismiss":        "Rejeter"
+}

@@ -54,3 +54,11 @@ EXTRA STEPS
 - You can set up a "Budget & Alert" monitor to email you when you are approaching your limit (I set mine to $1 since I'm expecting my translation needs to be well within the 'free' tier).
 
 Hopefully that resulted in a functioning API Key for you! I went through creating an account twice just to make sure the steps worked consistently but if the key's not working for you... I'm afraid I don't know enough about Google Cloud to suggest how to fix it.
+
+## Localization ##
+
+Translate in Place was localized using Translate in Place. If there are translations that could use improving, please send them along to me to correct. Thanks!
+
+## Warranty ##
+
+None! While nothing has been done to deliberately compromise the security of your API key (which is stored in clear text in the preferences for this extension), or deliberately mis-translate your text to something meaningless or even rude, those things could happen. By using this extension you agree anything that happens that you don't like as a result of using Translate in Place is not the responsibility of the developer.
