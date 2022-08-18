@@ -3,7 +3,7 @@
 	"name":		    "Translate In Place",
 	"organization": "Run Code Run Inc",
 	"description":  "Highlight a block of text and Translate in Place will translate it to any supported language you've chosen. TIP is powered by Google Translate and *your own* Google \"Cloud Translation API\" key. My understanding of their pricing (at the time this was written) is that it's free for the first 500,000-characters/month. See documentation for details and how-to. (Takes ~10 minutes to set up.)",
-	"version":	    "1.1.0",
+	"version":	    "1.1.1",
 	"license":	    "BSD 3-Clause License",
 	"repository":   "https://github.com/colinfoster/translate_in_place.novaextension",
 	"funding":	    "https://github.com/sponsors/colinfoster",

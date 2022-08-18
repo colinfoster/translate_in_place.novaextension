@@ -1,3 +1,9 @@
+## Version 1.1.1
+2022-08-18
+- Fixing small things that only seem to become visible after a release. :-)
+- Fix: _l() function wasn't latest version that made all parameters localizable.
+- Removed extraneous slashes from ReadMe (not sure where they came from).
+
 ## Version 1.1.0
 2022-08-16
 - Localizations for Français and Español.

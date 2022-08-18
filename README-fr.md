@@ -3,7 +3,7 @@
 Traduire sur place a été localisé à l'aide de Traduire sur place. S'il y a des traductions qui pourraient être améliorées, veuillez me les envoyer pour que je les corrige. Merci!
 
 
-**Traduire Sur Place** (TSP) traduira le texte en surbrillance dans la langue cible actuellement sélectionnée. TSP est optimisé par Google Translate et *votre propre* clé Google \"Cloud Translation API\". Ma compréhension de leur prix (au moment où cela a été écrit) est qu'il est gratuit pour les 500 000 premiers caractères/mois.
+**Traduire Sur Place** (TSP) traduira le texte en surbrillance dans la langue cible actuellement sélectionnée. TSP est optimisé par Google Translate et *votre propre* clé Google "Cloud Translation API". Ma compréhension de leur prix (au moment où cela a été écrit) est qu'il est gratuit pour les 500 000 premiers caractères/mois.
 
 Étant donné que Google Cloud propose des centaines de services, la configuration d'une clé d'API Cloud Translation demande un peu d'effort dans un labyrinthe quelque peu compliqué, mais j'ai essayé de documenter le processus ci-dessous. Cela devrait prendre environ 10 minutes.
 

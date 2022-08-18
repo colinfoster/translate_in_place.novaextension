@@ -1,4 +1,4 @@
-**Translate In Place** (TIP) will translate highlighted text into your currently selected target language. TIP is Powered by Google Translate and *your own* Google \"Cloud Translation API\" key. My understanding of their pricing (at the time this was written) is that it's free for the first 500,000-characters/month.
+**Translate In Place** (TIP) will translate highlighted text into your currently selected target language. TIP is Powered by Google Translate and *your own* Google "Cloud Translation API" key. My understanding of their pricing (at the time this was written) is that it's free for the first 500,000-characters/month.
 
 Since Google Cloud has hundreds of services, setting up a Cloud Translation API key takes a little effort through a somewhat convoluted maze, but I've tried to document process below. It should take about 10 minutes.
 

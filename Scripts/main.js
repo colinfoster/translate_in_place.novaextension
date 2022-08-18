@@ -222,7 +222,7 @@ function _l( key )
 	
 	// Arguments are replaced in reverse order so we replace %@11 (if it exists) before %@1.
 	for( var i = arguments.length - 1; i > 0; i-- )
-		str = str.replace('%@'+i, arguments[ i ] );
+		str = str.replace('%@'+i, nova.localize( arguments[ i ] ) );
 	
 	return str;
 }
