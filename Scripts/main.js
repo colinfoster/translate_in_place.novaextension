@@ -1,13 +1,8 @@
 
-exports.activate = function() {
-    // Do work when the extension is activated
-    nova.commands.register("tip.translate", handle_translate );
-	nova.commands.register("tip.resolve_language_menu", resolve_language_menu );
-}
-
-exports.deactivate = function() {
-    // Clean up state before the extension is deactivated
-}
+exports.activate = function() {}
+exports.deactivate = function() {}
+nova.commands.register("tip.translate", handle_translate );
+nova.commands.register("tip.resolve_language_menu", resolve_language_menu );
 
 
 // ---------------------------------------------------------------------------------------------- //
@@ -38,16 +33,16 @@ function resolve_language_menu()
 */
 // ---------------------------------------------------------------------------------------------- //
 
-function handle_translate( editor )
+function handle_translate( workspace )
 {
 	try
 	{
 		var prefs             = get_translation_prefs();
-		var untranslated_text = editor.selectedText.trim();
+		var untranslated_text = workspace.selectedText.trim();
 		if( !untranslated_text.length )
 			return;
 		
-		do_replace.editor     = editor;				// Kluge. Pass along the editor for use later.
+		do_replace.workspace     = workspace;				// Kluge. Pass along the workspace for use later.
 		
 		tx_translate( untranslated_text, prefs );	// Transmit the translation request.
 	}
@@ -75,7 +70,7 @@ function tx_translate( untranslated_text, prefs )
 		.replace('%from%', prefs['translate_from'])
 		.replace('%to%', prefs['translate_to'])
 		.replace('%@', encodeURI( untranslated_text ) );
-	
+	 
 	fetch( url )
 		.then( response =>
 		{
@@ -116,12 +111,22 @@ function rx_translate( data )
 
 function do_replace( translated_text )
 {
-	var editor = do_replace.editor;
-	var range  = editor.selectedRange;
+	var workspace = do_replace.workspace;
+	var range  = workspace.selectedRange;
 	
-	editor.edit( ( te ) =>
+	// Fetch any start/end markers that have been specified.
+	var start_marker = nova.workspace.config.get('tip.mark_translations');
+	var end_marker   = '';
+	
+	if( start_marker )
 	{
-		te.replace( range, decodeURIComponent( translated_text ) );
+		end_marker   = start_marker.substr( 2, 2 );
+		start_marker = start_marker.substring( 0, 2 );
+	}
+	
+	workspace.edit( ( te ) =>
+	{
+		te.replace( range, start_marker + translated_text + end_marker );
 	} );
 }
 
@@ -136,10 +141,8 @@ function get_translation_prefs( syntax )
 	{
 		'google_api_key': nova.config.get('tip.google_api_key'),
 		'translate_from': nova.workspace.config.get('tip.translate_from'),
-		'translate_to':   nova.workspace.config.get('tip.translate_to')
+		'translate_to':   nova.workspace.config.get('tip.translate_to'),
 	};
-	
-	// 👀➡️⬅️
 	
 	if( !prefs['google_api_key'] )
 		throw new Error( _l('_err.no_api_key') );

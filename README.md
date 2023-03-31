@@ -12,6 +12,8 @@ Your Google "Cloud Translate API" key should be entered in the *Extension* prefe
 
 The language you are translating from and to is set in the *Project* preferences. (It doesn't auto-detect the source language at this time.)
 
+You can also set characters to appear before and after blocks of ➡️translated text⬅️ (e.g., if you wanted to get a rough translation now, but also wanted someone to review the translation later).
+
 ![Project language preferences](https://ext.runcode.run/tip/readme/TIP_project_prefs.png)
 
 ## Registering for a Google 'Cloud Translate API' Key ##

@@ -17,6 +17,8 @@ Su clave de Google "Cloud Translate API" debe ingresarse en las preferencias de 
 
 El idioma al que está traduciendo se establece en las preferencias de *Proyecto*. (No detecta automáticamente el idioma de origen en este momento).
 
+También puede configurar los caracteres para que aparezcan antes y después de los bloques de ➡️texto traducido⬅️ (por ejemplo, si desea obtener una traducción aproximada ahora, pero también desea que alguien revise la traducción más tarde).
+
 ![Preferencias de idioma del proyecto](https://ext.runcode.run/tip/readme/TIP_project_prefs.png)
 
 ## Registrarse para obtener una clave de Google "Cloud Translate API" ##

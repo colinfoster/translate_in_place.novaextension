@@ -9,6 +9,8 @@
 	"_config.google_api_key": "Clé API Google",
 	"_config.translate_from": "Traduit depuis",
 	"_config.translate_to":   "Traduire en",
+	"_config.mark_translations": "Ajouter des marqueurs",
+	"_config.mark_translations_desc": "Ajoutez des marqueurs au début et à la fin des blocs traduits (par exemple, pour une révision ultérieure).",
 	"_config.api_key_desc":   "Vous devrez vous inscrire pour un compte Google Cloud gratuit et créer une clé API pour leur service de traduction. Voir le Lisez-moi.",
 	
 	"_err.error":             "Erreur",
